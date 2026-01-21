@@ -13,21 +13,20 @@ export default function Home() {
   const [fooditem, setFoodItem] = useState([]);
   const [search, setSearch] = useState("");
 
-  const loadData = async () => {
-    let response = await fetch(`${backendPort}/api/fooddata`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    response = await response.json();
-    setFoodItem(response[0]);
-    setFoodCat(response[1]);
-  };
-
   useEffect(() => {
+    const loadData = async () => {
+      let response = await fetch(`${backendPort}/api/fooddata`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      response = await response.json();
+      setFoodItem(response[0]);
+      setFoodCat(response[1]);
+    };
     loadData();
-  }, [loadData]);
+  }, [backendPort]);
 
   return (
     <div>
@@ -95,7 +94,7 @@ export default function Home() {
       </Carousel>
 
       <div className="container">
-        {foodCat != [] ? (
+        {foodCat.length !== 0 ? (
           foodCat.map((data, index) => {
             return (
               <div className="row mb-3" key={index}>
@@ -103,7 +102,7 @@ export default function Home() {
                   {data.CategoryName}
                 </div>
                 <hr />
-                {fooditem != [] ? (
+                {fooditem.length !== 0 ? (
                   fooditem
                     .filter(
                       (item) =>

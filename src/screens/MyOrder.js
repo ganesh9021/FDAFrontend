@@ -5,22 +5,23 @@ import Footer from "../components/Footer";
 export default function MyOrder() {
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   const [orderData, setOrderData] = useState("");
-  const fetchMyOrder = async () => {
-    console.log(localStorage.getItem("userEmail"));
-    await fetch(`${BACKEND_URL}/api/myOrderData`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: localStorage.getItem("userEmail") }),
-    }).then(async (res) => {
-      let response = await res.json();
-      setOrderData(response);
-    });
-  };
+
   useEffect(() => {
+    const fetchMyOrder = async () => {
+      console.log(localStorage.getItem("userEmail"));
+      await fetch(`${BACKEND_URL}/api/myOrderData`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: localStorage.getItem("userEmail") }),
+      }).then(async (res) => {
+        let response = await res.json();
+        setOrderData(response);
+      });
+    };
     fetchMyOrder();
-  }, [fetchMyOrder]);
+  }, [BACKEND_URL]);
   return (
     <>
       <div>
@@ -29,7 +30,7 @@ export default function MyOrder() {
 
       <div className="container">
         <div className="row">
-          {orderData != {}
+          {Object.keys(orderData).length > 0
             ? Array(orderData).map((data) => {
                 return data.orderData
                   ? data.orderData.order_data
