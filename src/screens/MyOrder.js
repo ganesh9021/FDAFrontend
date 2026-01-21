@@ -20,7 +20,7 @@ export default function MyOrder() {
   };
   useEffect(() => {
     fetchMyOrder();
-  }, []);
+  }, [fetchMyOrder]);
   return (
     <>
       <div>

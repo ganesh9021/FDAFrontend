@@ -27,7 +27,7 @@ export default function Home() {
 
   useEffect(() => {
     loadData();
-  }, []);
+  }, [loadData]);
 
   return (
     <div>
@@ -39,7 +39,7 @@ export default function Home() {
           <img
             className="d-block w-100 custom-carousel-image"
             src={barbeque}
-            alt="First slide"
+            alt="First_slide"
           />
           <Carousel.Caption>
             <input
@@ -58,7 +58,7 @@ export default function Home() {
           <img
             className="d-block w-100 custom-carousel-image"
             src={pastry}
-            alt="Second slide"
+            alt="Second_slide"
           />
           <Carousel.Caption>
             <input
@@ -77,7 +77,7 @@ export default function Home() {
           <img
             className="d-block w-100 custom-carousel-image"
             src={burger}
-            alt="Third slide"
+            alt="Third_slide"
           />
           <Carousel.Caption>
             <input

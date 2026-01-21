@@ -61,7 +61,7 @@ export default function Card(props) {
           style={{ height: "240px", objectFit: "fill" }}
           className="card-img-top"
           src={props.foodItem.img}
-          alt="Card image cap"
+          alt="logo"
         />
         <div className="card-body">
           <h5 className="card-title">{props.foodItem.name}</h5>

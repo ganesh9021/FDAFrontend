@@ -62,7 +62,7 @@ export default function Login() {
             <div className="text-center">
               <img
                 src={login1}
-                alt=""
+                alt="login"
                 className="img-fluid bg-light"
                 style={{
                   width: "50px",
